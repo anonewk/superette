@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <%- include('./partials/head', {title: 'Nouveau Produit | Ma supérette'}); %>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="px-4 py-5 my-5 text-center">
+        <h1 class="display-5 fw-bold">Ajouter un produit</h1>
+    </div>
+
+    <div class="row col-6 card shadow mx-auto my-5">
+
+        <h3 class="text-center m-3">AjouterE</h3>
+
+        <%- include('./_form', {action: '/products/create', submitLabel: 'AJOUTER !', product: null}); %>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<form class="card-body" method="post" action="<%= action %>">
+
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="name" name="name" placeholder="Nom du produits" <% if(product) { %> value="<%= product.name %>" <% } %>>
+        <label for="name">Nom du produits</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <textarea class="form-control" id="description" name="description" placeholder="Description du produits" ><% if(product) { %> <%= product.description %> <% } %></textarea>
+        <label for="name">Description du produits</label>
+    </div>
+
+    <div class="row">
+
+        <div class="col">
+
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="price" name="price" placeholder="Prix du produit" <% if(product) { %> value="<%= product.price %>" <% } %>>
+                <label for="price">Prix du produit</label>
+            </div>
+
+        </div>
+
+        <div class="col">
+
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Quantité  du produit" <% if(product) { %> value="<%= product.quantity %>" <% } %>>
+                <label for="quantity">Quantité  du produit</label>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col">
+        <!--    <div class="form-floating mb-3">
+                <input type="date" class="form-control" <% if(product) { %> id="updatedAt" <% } %> <% if(product) { %> name="updatedAt" <% } %> <% if(product) { %> placeholder="Date de d'edition du produit" <% } %> <% if(product) { %> value="<%= product.createdAt %>" <% } %>>
+                <label <% if(product) { %> for="updatedAt" <% } %>>Date de début du produits</label>
+            </div>-->
+        </div>
+
+    </div>
+<!--    <div class="col">
+        <input type="checkbox" id="status" name="status"  >
+        <label for="status">Status</label>
+    </div>-->
+    <div class="col">
+        <input type="checkbox" id="status" name="status" onClick="gBox('status')">
+        <label for="status">Status</label>
+    </div>
+    <div class="row col-6 mx-auto">
+        <button type="submit" class="btn btn-dark btn-lg btn-block"><%= submitLabel %></button>
+        <a href="/products" class="btn btn-outline-dark my-2">RETOUR</a>
+    </div>
+</form>
+<script>
+    function gBox(nbCheck){
+        if(document.getElementById(nbCheck).checked === true){
+//            document.getElementById('formulaire1').submit();
+            console.log('Checkbox  coché !');
+            document.querySelector('#status').value = true
+            console.log(document.querySelector('#status').value)
+            return true
+        }
+        else{
+            document.getElementById(nbCheck).value = false
+            console.log('Checkbox non coché !');
+            document.querySelector('#status').value = false
+            console.log(document.querySelector('#status').value)
+            return false
+        }
+    }
+
+</script>

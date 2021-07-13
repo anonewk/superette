@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <%- include('./partials/head', {title: 'Produit ' + product.name + ' | Ma supérette'}); %>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="px-4 py-3 text-center">
+        <h1 class="display-5 fw-bold">Votre produit</h1>
+    </div>
+
+    <div class="row col-6 card shadow mx-auto my-5 py-2">
+
+        <div class="card-body">
+            <h2 class="card-title text-center">Produit : <%= product.name %></h2>
+            <p class="card-text">Description : <%= product.description %></p>
+            <p class="card-text">Prix : <%= product.price %></p>
+            <p class="card-text">Quantité : <%= product.quantity %></p>
+            <p class="card-text">Status du produit : <%= product.status %></p>
+            <p class="card-text">
+                <small class="text-muted">
+                    Produit modifié le <%= product.updatedAt %>
+                </small>
+            </p>
+        </div>
+        <div class="card-footer text-muted border-0 bg-white text-end">
+            Fait le <%= product.createdAt %> par <%= product.creatorId.username %>
+        </div>
+        <hr>
+        <div class="d-flex justify-content-end">
+            <a href="/products/<%= product._id %>/edit/" class="btn btn-warning mx-1">MODIFIER</a>
+            <a href="/products" class="btn btn-outline-dark mx-1">RETOUR</a>
+            <a href="/products/<%= product._id %>/delete" class="btn btn-danger btn-lg my-1">SUPPRIMER</a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

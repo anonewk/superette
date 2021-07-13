@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <%- include('./partials/head', {title: 'Ma supérette'}); %>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="px-4 py-5 my-5 text-center">
+        <h1 class="display-5 fw-bold">Product Manager</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Bienvenue sur l'application de gestion de vos produtis (Stock, prix et disponibilité) </p>
+        </div>
+    </div>
+
+    <div class="row-">
+
+        <div class="col-10 mx-auto">
+
+            <div class="d-flex justify-content-between mb-3">
+                <h2>Mes produits</h2>
+                <a href="/products/new" class="btn btn-success btn-lg">Ajouter un produit</a>
+            </div>
+
+            <% if(products.length > 0 ) {
+                    for(const product of products) { %>
+                <div class="card mb-3 h-100">
+                    <div class="row g-0">
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= product.name %></h5>
+                                <p class="card-text"><%= product.description %></p>
+                                <p class="card-text"><%= product.price %></p>
+                                <p class="card-text"><%= product.quantity %></p>
+                                <p class="card-text"><%= product.status !== false ? 'Actif' : 'Désactivé'%></p>
+                            </div>
+                        </div>
+
+                        <% let action = {action: '/products/' + product._id + '/update/status/' + product.status, submitLabel: 'Switch dispo !', product: product}; %>
+                        <div class="col-md-2 align-self-center">
+                            <form action="<%= action.action %>" method="post">
+                                <button type="submit" class="btn btn-primary btn-lg my-1"><%= action.submitLabel %></button>
+                            </form>
+                            <a href="/products/<%= product._id %>" class="btn btn-dark btn-lg my-1">DÉTAILS</a>
+                            <a href="/products/<%= product._id %>/edit" class="btn btn-warning btn-lg my-1">MODIFIER</a>
+                            <a href="/products/<%= product._id %>/delete" class="btn btn-danger btn-lg my-1">SUPPRIMER</a>
+                        </div>
+                    </div>
+                </div>
+            <% }
+            } else { %>
+                <h3 class="text-center my-5">Il n'y a pas encore de produits !</h3>
+            <% } %>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

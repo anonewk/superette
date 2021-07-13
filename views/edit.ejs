@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <%- include('./partials/head', {title: 'Modifier un produit | Ma supérette'}); %>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="px-4 py-5 my-5 text-center">
+        <h1 class="display-5 fw-bold">Edition de produit</h1>
+    </div>
+
+    <div class="row col-6 card shadow mx-auto my-5">
+        <h3 class="text-center m-3">MON produit</h3>
+        <%- include('./_form', {action: '/products/' + product._id + '/update', submitLabel: 'MODIFIER !', product: product}); %>
+    </div>
+
+</div>
+
+</body>
+</html>
